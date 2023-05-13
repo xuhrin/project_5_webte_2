@@ -30,7 +30,7 @@ alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 ## Launch all containers
 
 ```sh
-./vendor/bin/sail up -d
+sail up -d
 ```
 
 ## Modify `.env`
@@ -40,22 +40,22 @@ Set `DB_HOST` in `.env` to real `MySQL` host.
 ## Migrate database
 
 ```sh
-./vendor/bin/sail artisan migrate
+sail artisan migrate
 ```
 
 ## Stop all containers
 
 ```sh
-./vendor/bin/sail down
+sail down
 ```
 
 ## Remove all containers
 
 ```sh
-./vendor/bin/sail down --rmi all
+sail down --rmi all
 ```
 
-## Remove all untracked files `git`
+## Remove all untracked files
 
 ```sh
 git clean -fdx
