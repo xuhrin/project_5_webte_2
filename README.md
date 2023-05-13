@@ -33,7 +33,7 @@ alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 sail up -d
 ```
 
-## Modify `.env`
+## Modify variables
 
 Set `DB_HOST` in `.env` to real `MySQL` host.
 
@@ -59,4 +59,24 @@ sail down --rmi all
 
 ```sh
 git clean -fdx
+```
+
+## Install node dependencies
+
+```sh
+sail npm install
+```
+
+## Build resources
+
+```sh
+sail npx vite build
+```
+
+## Recreate routes cache
+
+Fix changing routes during development.
+
+```sh
+sail artisan route:cache
 ```

@@ -16,3 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', function () {
+    if (App::isLocale('sk')) {
+        return redirect('/home/sk');
+    }
+    return redirect('/home/en');
+});
+
+Route::get('/home/{locale}', function (string $locale) {
+    if (!in_array($locale, ['en', 'sk'])) {
+        abort(400);
+    }
+
+    App::setlocale($locale);
+    return view('home');
+});
