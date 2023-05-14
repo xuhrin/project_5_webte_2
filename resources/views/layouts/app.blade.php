@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ $locale }}">
 
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,7 @@
     <title>{{ config('app.name', 'Projekt') }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 
 <body>
@@ -17,7 +18,7 @@
     <nav class="red darken-2">
         <div class="nav-wrapper">
             <!-- Project logo/name -->
-            <a href="#" class="brand-logo center">
+            <a href="{{ route('home') }}" class="brand-logo center">
                 {{ config('app.name') }}
             </a>
 
@@ -30,13 +31,13 @@
             <ul class="brand-logo right hide-on-med-and-down">
                 <li class="active">
                     <!-- TODO: Use blade to mark active page -->
-                    <a href="#">
+                    <a href="{{ route('home') }}">
                         <i class="material-icons">home</i>
                         {{ __('app.home') }}
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('manual') }}">
                         <i class="material-icons">book</i>
                         {{ __('app.manual') }}
                     </a>
@@ -57,7 +58,7 @@
                     @endforeach
                 </ul>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('user-form') }}">
                         <i class="material-icons">login</i>
                         {{ __('app.login') }}
                     </a>
@@ -69,7 +70,7 @@
     <!-- Sidebar, shown when top menu changes to hamburger menu -->
     <ul id="nav-mobile" class="sidenav">
         <li class="logo">
-            <a href="#" class="brand-logo">
+            <a href="{{ route('home') }}" class="brand-logo">
                 <h3 class="bold red-text text-darken-2">{{ config('app.name') }}</h3>
             </a>
         </li>
@@ -78,13 +79,13 @@
         </li>
         <li class="active">
             <!-- TODO: Use blade to mark active page -->
-            <a class="waves-effect" href="#">
+            <a class="waves-effect" href="{{ route('home') }}">
                 <i class="material-icons">home</i>
                 {{ __('app.home') }}
             </a>
         </li>
         <li>
-            <a class="waves-effect" href="#">
+            <a class="waves-effect" href="{{ route('manual') }}">
                 <i class="material-icons">book</i>
                 {{ __('app.manual') }}
             </a>
@@ -110,7 +111,7 @@
             </ul>
             </div>
         <li>
-            <a class="waves-effect" href="#">
+            <a class="waves-effect" href="{{ route('user-form') }}">
                 <i class="material-icons">login</i>
                 {{ __('app.login') }}
             </a>

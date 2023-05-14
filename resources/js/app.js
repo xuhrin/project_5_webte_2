@@ -17,6 +17,11 @@ $(function () {
         {
         }
     );
+    M.Tabs.init(
+        document.querySelectorAll('.tabs'),
+        {
+        }
+    );
     M.Sidenav.init(
         document.getElementById('nav-mobile'),
         {

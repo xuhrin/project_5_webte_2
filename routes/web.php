@@ -13,11 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Routes to views
+
 Route::get('/', function () {
-    $locale = Session::get('locale', 'sk');
-    App::setLocale($locale);
     return view('home');
-});
+})->name('home');
+
+Route::get('/user', function () {
+    return view('user.form');
+})->name('user-form');
+
+Route::get('/manual', function () {
+    return view('manual');
+})->name('manual');
+
+// Route for language change
 
 Route::get('/language/{locale}', function ($locale) {
     if (!in_array($locale, ['en', 'sk'])) {
@@ -28,6 +38,17 @@ Route::get('/language/{locale}', function ($locale) {
     App::setLocale($locale);
     return redirect()->back();
 })->name('language');
+
+// Other
+
+Route::post('/login', function () {
+    return redirect()->back();
+})->name('login');
+
+Route::post('/register', function () {
+    return redirect()->back();
+})->name('register');
+
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::resource('roles', RoleController::class);

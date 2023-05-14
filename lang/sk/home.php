@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'welcome' => 'Vítaj'
+    'welcome' => 'Vítaj',
+    'message' => 'Vypracoval Viačeslav Uhrin a Abdullah Mohammed Magel Al-Ward'
 ];

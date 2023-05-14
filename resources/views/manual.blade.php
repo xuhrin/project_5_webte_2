@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="section">
-        <h1>{{ __('home.welcome') }}</h1>
-        <p>{{ __('home.message') }}</p>
+        <h1>{{ __('manual.title') }}</h1>
     </div>
 @endsection
