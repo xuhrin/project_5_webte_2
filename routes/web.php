@@ -14,21 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $locale = Session::get('locale', 'sk');
+    App::setLocale($locale);
+    return view('home');
 });
 
-Route::get('/home', function () {
-    if (App::isLocale('sk')) {
-        return redirect('/home/sk');
-    }
-    return redirect('/home/en');
-});
-
-Route::get('/home/{locale}', function (string $locale) {
+Route::get('/language/{locale}', function ($locale) {
     if (!in_array($locale, ['en', 'sk'])) {
         abort(400);
     }
 
-    App::setlocale($locale);
-    return view('home');
-});
+    Session::put('locale', $locale);
+    App::setLocale($locale);
+    return redirect()->back();
+})->name('language');
+
+// Route::middleware(['auth'])->group(function () {
+//     Route::resource('roles', RoleController::class);
+// });

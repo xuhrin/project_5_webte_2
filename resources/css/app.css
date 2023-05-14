@@ -1,1 +1,15 @@
+@import 'material-icons/iconfont/material-icons.css';
 @import 'materialize-css/dist/css/materialize.min.css';
+@import "@fontsource/roboto";
+
+html, body {
+    font-family: "Roboto";
+}
+
+.no-padding .collapsible .collapsible-header {
+    padding: 0 32px;
+}
+
+/* .no-padding .collapsible .collapsible-body a {
+    padding: 0 64px;
+} */

@@ -1,8 +1,8 @@
-@include('base/head')
+@extends('layouts.app')
 
-<div class="container center-align">
-    <h1>{{ __('home.welcome') }}</h1>
-    <p>This is a simple welcome page using Materialize CSS</p>
-</div>
+@section('content')
 
-@include('base/tail')
+<h1>{{ __('home.welcome') }}</h1>
+<p>This is a simple welcome page using Materialize CSS</p>
+
+@endsection
