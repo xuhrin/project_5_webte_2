@@ -28,8 +28,8 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom-color: #ee6e73;
-    box-shadow: 0 1px 0 0 #ee6e73;
+    border-bottom-color: #d32f2f;
+    box-shadow: 0 1px 0 0 #d32f2f;
 }
 
 input:not([type]):focus:not([readonly])+label,
@@ -46,7 +46,7 @@ input[type=number]:not(.browser-default):focus:not([readonly])+label,
 input[type=search]:not(.browser-default):focus:not([readonly])+label,
 textarea.materialize-textarea:focus:not([readonly])+label,
 .input-field .prefix.active {
-    color: #ee6e73;
+    color: #d32f2f;
 }
 
 [type=checkbox].filled-in:checked+span:not(.lever):after {

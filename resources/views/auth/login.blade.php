@@ -43,31 +43,35 @@
                         </div>
                     </div>
 
-                    <div class="row valign-wrapper">
-                        <!-- Remember me, input -->
-                        <p class="col s4 center">
+                    <!-- Submit button -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button type="submit" class="btn waves-effect waves-light red darken-2">
+                                {{ __('form.login_action') }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Remember me, input -->
+                    <div class="row">
+                        <p class="col s12 center">
                             <label for="remember">
                                 <input type="checkbox" class="filled-in" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <span>{{ __('form.remember') }}</span>
                             </label>
                         </p>
+                    </div>
 
-                        <!-- Submit button -->
-                        <div class="input-field col s4">
-                            <button type="submit" class="btn waves-effect waves-light red darken-2">
-                                {{ __('form.login_action') }}
-                            </button>
-                        </div>
-
-                        <!-- Password reset -->
-                        @if (Route::has('password.request'))
-                            <p class="col s4 center">
+                    <!-- Password reset -->
+                    @if (Route::has('password.request'))
+                        <div class="row">
+                            <p class="col s12 center">
                                 <a class="red-text text-darken-2" href="{{ route('password.request') }}">
                                     {{ __('form.forgot') }}
                                 </a>
                             </p>
-                        @endif
-                    </div>
+                        </div>
+                    @endif
 
                     <!-- Don't have account? Register -->
                     <div class="row">
