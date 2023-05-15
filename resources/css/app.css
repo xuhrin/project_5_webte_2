@@ -48,3 +48,8 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 .input-field .prefix.active {
     color: #ee6e73;
 }
+
+[type=checkbox].filled-in:checked+span:not(.lever):after {
+    background-color: #d32f2f;
+    border: 2px solid #d32f2f;
+}

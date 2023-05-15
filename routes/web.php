@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +18,8 @@ use Illuminate\Support\Facades\Route;
 // Routes to views
 
 Route::get('/', function () {
-    return view('home');
-})->name('home');
-
-Route::get('/user', function () {
-    return view('user.form');
-})->name('user-form');
+    return view('welcome');
+})->name('welcome');
 
 Route::get('/manual', function () {
     return view('manual');
@@ -39,17 +37,16 @@ Route::get('/language/{locale}', function ($locale) {
     return redirect()->back();
 })->name('language');
 
-// Other
+// Authentication
 
-Route::post('/login', function () {
-    return redirect()->back();
-})->name('login');
+Auth::routes();
 
-Route::post('/register', function () {
-    return redirect()->back();
-})->name('register');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::get('/form', function () {
+    return view('user.form');
+})->name('user-form');
 
-// Route::middleware(['auth'])->group(function () {
-//     Route::resource('roles', RoleController::class);
-// });
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('/users', UserController::class);
+});

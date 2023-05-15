@@ -2,7 +2,18 @@
 
 @section('content')
     <div class="section">
-        <h1>{{ __('home.welcome') }}</h1>
-        <p>{{ __('home.message') }}</p>
+        <div class="card">
+            <div class="card-header">{{ __('Dashboard') }}</div>
+
+            <div class="card-content">
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                {{ __('You are logged in!') }}
+            </div>
+        </div>
     </div>
 @endsection
