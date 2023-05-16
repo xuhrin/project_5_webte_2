@@ -29,14 +29,14 @@ class HomeController extends Controller
     // Called first time to set role
     public function select(string $role) {
         if (!in_array($role, ['student', 'teacher'])) {
-            abort(400);
+            return redirect()->back()->with('failed', true)->with('status', __('home.choose_role_failed'));
         }
 
         if (auth()->getUser()->hasRole(['student', 'teacher'])) {
-            abort(400);
+            return redirect()->back()->with('failed', true)->with('status', __('home.choose_role_already_set'));
         }
 
         auth()->getUser()->assignRole($role);
-        return redirect()->intended('home'); // TODO: Set status
+        return redirect()->intended('home')->with('status', __('home.choose_role_success'));
     }
 }

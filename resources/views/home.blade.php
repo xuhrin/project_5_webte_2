@@ -4,7 +4,7 @@
     <div class="section">
 
         @if (session('status'))
-            <div class="card-panel black-text teal accent-3">
+            <div class="card-panel  @if(session('failed')) white-text red @else black-text teal @endif accent-3">
                 {{ session('status') }}
             </div>
         @endif
