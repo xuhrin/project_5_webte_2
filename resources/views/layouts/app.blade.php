@@ -37,7 +37,7 @@
                 @else
                     <li>
                         <a href="{{ route('home') }}">
-                            <i class="material-icons">home</i>
+                            <i class="material-icons">assignment</i>
                             {{ __('app.home') }}
                         </a>
                     </li>
@@ -123,7 +123,7 @@
             <li>
                 <!-- TODO: Use blade to mark active page -->
                 <a class="waves-effect" href="{{ route('home') }}">
-                    <i class="material-icons">home</i>
+                    <i class="material-icons">assignment</i>
                     {{ __('app.home') }}
                 </a>
             </li>
