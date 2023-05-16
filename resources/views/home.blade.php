@@ -2,18 +2,15 @@
 
 @section('content')
     <div class="section">
-        <div class="card">
-            <div class="card-header">{{ __('Dashboard') }}</div>
-
-            <div class="card-content">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
-                {{ __('You are logged in!') }}
-            </div>
+        <div>
+            <h4 class="col s12">{{ __('home.title') }}</h4>
+            {{ __('home.logged_in', ['name' => Auth::user()->name]) }}
         </div>
+
+        @if (session('status'))
+            <div class="card-panel black-text teal accent-3">
+                {{ session('status') }}
+            </div>
+        @endif
     </div>
 @endsection
