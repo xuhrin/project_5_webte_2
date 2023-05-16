@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'home' => 'Domov',
+    'home' => 'Riadiaci panel',
     'manual' => 'Návod',
     'language' => 'Jazyk',
     'login' => 'Prihlásiť sa',

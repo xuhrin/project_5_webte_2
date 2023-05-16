@@ -14,4 +14,7 @@ return [
     'forgot' => 'Forgot password?',
     'dont_have_account' => 'Don\'t have an account?',
     'already_have_account' => 'Already have an account?',
+    'reset' => 'Password reset',
+    'reset_action' => 'Reset password',
+    'send_reset_link' => 'Send link',
 ];
