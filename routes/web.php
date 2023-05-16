@@ -42,11 +42,8 @@ Route::get('/language/{locale}', function ($locale) {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::get('/form', function () {
-    return view('user.form');
-})->name('user-form');
+Route::get('/home/select/{role}', [HomeController::class, 'select'])->name('home.select');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('/users', UserController::class);
+    // Route::resource('/users', UserController::class);
 });
