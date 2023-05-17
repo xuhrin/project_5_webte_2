@@ -1,5 +1,32 @@
 <?php
 
 return [
-    'title' => 'Návod'
+    'title' => 'Návod',
+    'login_title' => 'Prihlásenie',
+    'login_begin' => 'Stlač na tlačidlo v hornom paneli (alebo otvor hamburgerové menu - tri čiarky) s textom ":login".',
+    'login_register' => 'Ak ešte nemáte účet, tak otvorte ":register" link.',
+    'login_forgot' => 'Ak ste zabudli heslo, tak otvorte ":forgot" link.',
+    'login_write' => 'Napíšte mailovú adresu a heslo.',
+    'login_remember' => 'Ak chcete zrušiť automatické odhlásenie po vypršaní relácie, označte ":remember".',
+    'login_submit' => 'Stlačte tlačidlo ":submit" na dokončenie prihlásenia.',
+    'logout_title' => 'Odhlásenie',
+    'logout_begin' => 'Stlač na tlačidlo v hornom paneli (alebo otvor hamburgerové menu - tri čiarky) s vaším menom.',
+    'logout_submit' => 'Stlačte tlačidlo ":submit" na dokončenie odhlásenia.',
+    'register_title' => 'Registrácia',
+    'register_begin' => 'Prejdite na stránku prihlásenia (podľa sekcie ":section") a otvorte ":register" link.',
+    'register_write' => 'Napíšte meno, priezvisko, mailovú adresu, heslo a potvrdte heslo.',
+    'register_submit' => 'Stlačte tlačidlo ":submit" na dokončenie registrácie.',
+    'reset_title' => 'Obnova hesla',
+    'reset_begin' => 'Prejdite na stránku prihlásenia (podľa sekcie ":section") a otvorte ":reset" link.',
+    'reset_write' => 'Napíšte vašu mailovú adresu.',
+    'reset_submit' => 'Stlačte tlačidlo ":submit" na dokončenie požiadavky na obnovu hesla.',
+    'reset_email' => 'Príde vám mail s linkom obnovy hesla, platný 60 minút. Otvorte link, ktorý vám prišiel.',
+    'reset_write_new' => 'Napíšte nové heslo a potvrdte nové heslo.',
+    'reset_submit_new' => 'Stlačte tlačidlo ":submit" na dokončenie obnovy hesla.',
+    'language_title' => 'Zmena jazyka',
+    'language_begin' => 'Stlač na tlačidlo v hornom paneli (alebo otvor hamburgerové menu - tri čiarky) s textom ":language".',
+    'language_submit' => 'Vyberte jazyk z padajúceho (alebo kolapsujúceho) menu.',
+    'role_title' => 'Výber role',
+    'role_begin' => 'Potom, čo ste dokončili registráciu, prejdite na riadiaci panel (malo by vás automaticky presmerovať).',
+    'role_submit' => 'Vyberte si medzi rolami ":student" a ":teacher".',
 ];
