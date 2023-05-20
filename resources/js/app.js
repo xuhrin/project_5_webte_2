@@ -6,10 +6,11 @@ import 'materialize-css/dist/js/materialize';
 
 $(function () {
     M.Dropdown.init(
-        document.getElementById('language-trigger'),
+        document.querySelectorAll('.dropdown-trigger'),
         {
             coverTrigger: false,
-            alignment: 'right'
+            alignment: 'right',
+            constrainWidth: false
         }
     );
     M.Collapsible.init(

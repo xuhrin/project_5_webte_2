@@ -1,10 +1,12 @@
 <?php
 
 return [
-    'home' => 'Domov',
+    'home' => 'Riadiaci panel',
     'manual' => 'Návod',
     'language' => 'Jazyk',
-    'login' => 'Prihlásenie',
+    'login' => 'Prihlásiť sa',
+    'logout' => 'Odhlásiť sa',
+    'register' => 'Registrovať',
     'en' => 'Angličtina',
-    'sk' => 'Slovenčina'
+    'sk' => 'Slovenčina',
 ];

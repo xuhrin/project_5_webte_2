@@ -33,10 +33,6 @@ alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 sail up -d
 ```
 
-## Modify variables
-
-Set `DB_HOST` in `.env` to real `MySQL` host.
-
 ## Migrate database
 
 ```sh
@@ -71,6 +67,12 @@ sail npm install
 
 ```sh
 sail npx vite build
+```
+
+## Seed database
+
+```sh
+sail artisan db:seed
 ```
 
 ## Recreate routes cache

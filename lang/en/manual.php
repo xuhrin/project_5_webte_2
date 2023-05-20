@@ -1,5 +1,32 @@
 <?php
 
 return [
-    'title' => 'Manual'
+    'title' => 'Manual',
+    'login_title' => 'Login',
+    'login_begin' => 'Press on a button in top-bar (or side navigation on mobile, openned by pressing on "hamburger" - three bars button) menu with text ":login".',
+    'login_register' => 'If you don\'t have an account, open ":register" link.',
+    'login_forgot' => 'If you forgot your password, open ":forgot" link.',
+    'login_write' => 'Write your e-mail and password.',
+    'login_remember' => 'If you want to disable automatic logout after session expires, select ":remember".',
+    'login_submit' => 'Press ":submit" button to complete login.',
+    'logout_title' => 'Logout',
+    'logout_begin' => 'Press on a button in top-bar (or side navigation on mobile, openned by pressing on "hamburger" - three bars button) menu with your name.',
+    'logout_submit' => 'Press ":submit" button to complete logout.',
+    'register_title' => 'Registration',
+    'register_begin' => 'Navigate to the login page (see ":section" section) and open ":register" link.',
+    'register_write' => 'Write your first name, last name, e-mail, password and confirm password.',
+    'register_submit' => 'Press ":submit" button to complete registration.',
+    'reset_title' => 'Password reset',
+    'reset_begin' => 'Navigate to the login page (see ":section" section) and open ":reset" link.',
+    'reset_write' => 'Write your e-mail address.',
+    'reset_submit' => 'Press ":submit" button to complete password reset request.',
+    'reset_email' => 'You\'ll receive a mail with reset link, valid for 60 minutes. Open the link that you\'ve received.',
+    'reset_write_new' => 'Write new password and confirm new password',
+    'reset_submit_new' => 'Press ":submit" button to complete password reset.',
+    'language_title' => 'Change language',
+    'language_begin' => 'Press on a button in top-bar (or side navigation on mobile, openned by pressing on "hamburger" - three bars button) menu with text ":language".',
+    'language_submit' => 'Select a language from the dropdown (or collapsible) menu.',
+    'role_title' => 'Selecting a role',
+    'role_begin' => 'After you\'ve completed registration, navigate to your dashboard (should automatically redirect you).',
+    'role_submit' => 'Choose between ":student" and ":teacher" role.',
 ];

@@ -1,10 +1,12 @@
 <?php
 
 return [
-    'home' => 'Home',
+    'home' => 'Dashboard',
     'manual' => 'Manual',
     'language' => "Language",
-    'login' => 'Login',
+    'login' => 'Sign in',
+    'logout' => 'Sign out',
+    'register' => 'Sign up',
     'en' => 'English',
-    'sk' => 'Slovak'
+    'sk' => 'Slovak',
 ];

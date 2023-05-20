@@ -9,5 +9,12 @@ return [
     'login' => 'Login',
     'login_action' => 'Sign in',
     'register' => 'Registration',
-    'register_action' => 'Sign up'
+    'register_action' => 'Sign up',
+    'remember' => 'Remember me',
+    'forgot' => 'Forgot password?',
+    'dont_have_account' => 'Don\'t have an account?',
+    'already_have_account' => 'Already have an account?',
+    'reset' => 'Password reset',
+    'reset_action' => 'Reset password',
+    'send_reset_link' => 'Send link',
 ];
