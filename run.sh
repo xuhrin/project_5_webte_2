@@ -25,6 +25,3 @@ sail artisan db:seed
 
 # Cache routes
 sail artisan route:cache
-
-# Stop containers
-sail down
