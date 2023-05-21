@@ -21,9 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (config('app.env') === 'production') {
-            URL::forceScheme('https');
-        }
         view()->composer('layouts.app', function ($view) {
             $view->with('locale', App::getLocale());
             $view->with('locales', ['en', 'sk']);
