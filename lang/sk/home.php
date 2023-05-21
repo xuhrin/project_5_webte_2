@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'welcome' => 'Vítaj',
+    'welcome' => 'Vitajte',
     'message' => 'Vypracoval Abdullah Mohammed Magel Al-Ward, Michal Belan a Viačeslav Uhrin',
     'title' => 'Riadiaci panel',
     'logged_in' => 'Ste prihlásený ako :name.',
