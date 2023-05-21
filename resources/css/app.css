@@ -50,6 +50,6 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 }
 
 [type=checkbox].filled-in:checked+span:not(.lever):after {
-    background-color: #d32f2f;
+    background-color: blue;
     border: 2px solid #d32f2f;
 }
