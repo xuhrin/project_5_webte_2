@@ -7,7 +7,7 @@ return [
     'confirm' => 'Potvrdenie hesla',
     'email' => 'Mailová adresa',
     'login' => 'Prihlásenie',
-    'login_action' => 'Prilásiť',
+    'login_action' => 'Prihlásiť',
     'register' => 'Registrácia',
     'register_action' => 'Registrovať',
     'remember' => 'Zapamätaj si ma',
