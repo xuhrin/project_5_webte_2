@@ -29,7 +29,7 @@ input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
     border-bottom-color: blue;
-    box-shadow: 0 1px 0 0 #d32f2f;
+    box-shadow: 0 1px 0 0 blue;
 }
 
 input:not([type]):focus:not([readonly])+label,
@@ -51,5 +51,5 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 
 [type=checkbox].filled-in:checked+span:not(.lever):after {
     background-color: blue;
-    border: 2px solid #d32f2f;
+    border: 2px solid blue;
 }
