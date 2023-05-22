@@ -42,18 +42,17 @@ RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.2
 # COPY php.ini /etc/php/8.2/cli/conf.d/99-www-data.ini
 # RUN chmod +x /usr/local/bin/start-container
 
-RUN git clone https://github.com/xuhrin/project_5_webte_2
+RUN git clone --depth=1 https://github.com/xuhrin/project_5_webte_2
 WORKDIR /var/www/html/project_5_webte_2
-RUN git pull
 RUN composer install
 RUN npm install && npx vite build
 
 RUN if [ $PARTIAL ]; then cp ./docker/standalone/.env.part .env; cp ./docker/standalone/.env.full .env; fi
-RUN php artisan key:generate && php artisan config:cache && php artisan cache:clear
+RUN php artisan key:generate
 # RUN php artisan migrate
 
-RUN groupadd -g 1000 www-data
-RUN useradd -u 1000 -ms /bin/bash -g www-data www-data
+# RUN groupadd -g 1000 www-data
+# RUN useradd -u 1000 -ms /bin/bash -g www-data www-data
 RUN chown www-data:www-data -R .
 
 EXPOSE 9000

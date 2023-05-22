@@ -25,5 +25,13 @@ class AppServiceProvider extends ServiceProvider
             $view->with('locale', App::getLocale());
             $view->with('locales', ['en', 'sk']);
         });
+
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
+
+        $url = app('request')->root();
+        $url = str_replace(['http://', 'https://'], '', $url);
+        config(['app.url' => 'https://' . $url]);
     }
 }
