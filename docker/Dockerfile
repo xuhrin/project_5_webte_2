@@ -39,7 +39,7 @@ WORKDIR /var/www/html/project_5_webte_2
 RUN composer install
 RUN npm install && npx vite build
 
-RUN chown www-data:www-data -R .
+# RUN chown www-data:www-data -R .
 RUN if [ $PARTIAL ]; then cp ./docker/.env.part .env; cp ./docker/.env.full .env; fi
 RUN php artisan key:generate
 

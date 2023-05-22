@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 export URL=$(printf '%s\n' "$APP_URL" | sed -e 's/[\/&]/\\&/g')
-exec echo "Escaped URL set to $URL"
-exec sed -i "s/APP_URL=.*/APP_URL=$URL/" .env
-exec echo 'yes' | php artisan migrate
-exec echo 'yes' | php artisan db:seed --class PermissionSeeder
+echo "Escaped URL set to $URL"
+sed -i "s/APP_URL=.*/APP_URL=$URL/" .env
+echo 'yes' | php artisan migrate
+echo 'yes' | php artisan db:seed --class PermissionSeeder
+echo 'Starting server'
 exec php artisan serve --host=0.0.0.0 --port=80
