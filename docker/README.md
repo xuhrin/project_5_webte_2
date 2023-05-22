@@ -54,5 +54,5 @@ Build docker:
 cd ./docker
 docker build -t app:app .
 docker network create -d bridge --subnet 192.168.0.0/24 --gateway 192.168.0.1 app-network
-docker run -d -p 8000:80 -e APP_URL=<URL_HERE> --network app-network -v /var/www/site237.webte.fei.stuba.sk/project_5_webte_2/storage:/var/www/html/project_5_webte_2/storage --name app app:app
+docker run -d -p 8000:80 -e APP_URL=<URL_HERE> --network app-network -v <STORAGE_FOLDER>:/var/www/html/project_5_webte_2/storage --name app app:app
 ```
