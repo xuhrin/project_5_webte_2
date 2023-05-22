@@ -37,25 +37,16 @@ RUN apt-get update \
 
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.2
 
-# COPY start-container /usr/local/bin/start-container
-# COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # COPY php.ini /etc/php/8.2/cli/conf.d/99-www-data.ini
-# RUN chmod +x /usr/local/bin/start-container
 
 RUN git clone --depth=1 https://github.com/xuhrin/project_5_webte_2
 WORKDIR /var/www/html/project_5_webte_2
 RUN composer install
 RUN npm install && npx vite build
 
-RUN if [ $PARTIAL ]; then cp ./docker/standalone/.env.part .env; cp ./docker/standalone/.env.full .env; fi
-RUN php artisan key:generate
-# RUN php artisan migrate
-
-# RUN groupadd -g 1000 www-data
-# RUN useradd -u 1000 -ms /bin/bash -g www-data www-data
 RUN chown www-data:www-data -R .
+RUN if [ $PARTIAL ]; then cp ./docker/.env.part .env; cp ./docker/.env.full .env; fi
+RUN php artisan key:generate
 
-EXPOSE 9000
-CMD php artisan migrate && php artisan serve --host=0.0.0.0 --port=9000
-
-# ENTRYPOINT ["start-container"]
+EXPOSE 80
+CMD php artisan migrate && php artisan serve --host=0.0.0.0 --port=80
