@@ -13,7 +13,7 @@ server {
         listen 80;
         listen [::]:80;
 
-        server_name site237.webte.fei.stuba.sk;
+        server_name [URL_HERE];
 
         rewrite ^ https://$server_name$request_uri? permanent;
 }
@@ -23,12 +23,12 @@ server {
         listen 443 ssl;
         listen [::]:443 ssl;
 
-        server_name site237.webte.fei.stuba.sk;
+        server_name [URL_HERE];
 
         access_log /var/log/nginx/access.log;
         error_log  /var/log/nginx/error.log info;
 
-        root /var/www/site237.webte.fei.stuba.sk;
+        root /var/www/[URL_HERE];
         index index.php index.html;
 
         ssl on;
@@ -53,6 +53,6 @@ Build docker:
 ```sh
 cd ./docker
 docker build -t app:app .
-docker network create -d bridge --subnet 192.168.0.0/24 --gateway 192.168.0.1 app-network
-docker run -d -p 8000:80 -e APP_URL=<URL_HERE> --network app-network -v <STORAGE_FOLDER>:/var/www/html/project_5_webte_2/storage --name app app:app
+docker network create -d bridge app-bridge
+docker run -d -p 8000:80 -e APP_URL=[URL_HERE] --network app-bridge -v [STORAGE_FOLDER]:/var/www/html/project_5_webte_2/storage --name app app:app
 ```
