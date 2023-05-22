@@ -12,7 +12,7 @@ ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update \
-    && apt-get install -y gnupg gosu curl ca-certificates zip unzip git supervisor sqlite3 libcap2-bin libpng-dev python2 dnsutils librsvg2-bin \
+    && apt-get install -y gnupg curl ca-certificates zip unzip git libcap2-bin libpng-dev python2 dnsutils librsvg2-bin \
     && curl -sS 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x14aa40ec0831756756d7f66c4f4ea0aae5267a6c' | gpg --dearmor | tee /etc/apt/keyrings/ppa_ondrej_php.gpg > /dev/null \
     && echo "deb [signed-by=/etc/apt/keyrings/ppa_ondrej_php.gpg] https://ppa.launchpadcontent.net/ondrej/php/ubuntu jammy main" > /etc/apt/sources.list.d/ppa_ondrej_php.list \
     && apt-get update \
@@ -43,22 +43,20 @@ RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.2
 # RUN chmod +x /usr/local/bin/start-container
 
 RUN git clone https://github.com/xuhrin/project_5_webte_2
-RUN git pull
 WORKDIR /var/www/html/project_5_webte_2
+RUN git pull
 RUN composer install
-RUN npm install
-RUN npx vite build
+RUN npm install && npx vite build
 
 RUN if [ $PARTIAL ]; then cp ./docker/standalone/.env.part .env; cp ./docker/standalone/.env.full .env; fi
 RUN php artisan key:generate && php artisan config:cache && php artisan cache:clear
-RUN php artisan migrate
-RUN php artisan db:seed
+# RUN php artisan migrate
 
-# RUN groupadd -g 1000 www-data
-# RUN useradd -u 1000 -ms /bin/bash -g www-data www-data
-# RUN chown www-data:www-data -R .
+RUN groupadd -g 1000 www-data
+RUN useradd -u 1000 -ms /bin/bash -g www-data www-data
+RUN chown www-data:www-data -R .
 
 EXPOSE 9000
-CMD  php artisan serve --host=0.0.0.0 --port=9000
+CMD php artisan migrate && php artisan serve --host=0.0.0.0 --port=9000
 
 # ENTRYPOINT ["start-container"]

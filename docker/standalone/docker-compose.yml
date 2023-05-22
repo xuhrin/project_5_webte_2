@@ -1,0 +1,65 @@
+version: '3'
+services:
+    laravel.app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                PARTIAL: 0
+        image: standalone-8.2/app
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        ports:
+            - '80:80'
+            - '5173:5173'
+        environment:
+            XDEBUG_MODE: off
+            XDEBUG_CONFIG: client_host=host.docker.internal
+            IGNITION_LOCAL_SITES_PATH: /var/www/html/project_5_webte_2
+        volumes:
+            - 'standalone-storage:/var/www/html/project_5_webte_2/storage'
+        networks:
+            - standalone
+        depends_on:
+            mysql:
+                condition: service_healthy
+            mailpit:
+                condition: service_started
+    mysql:
+        image: 'mysql/mysql-server:8.0'
+        ports:
+            - '3306:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: 'standalone'
+            MYSQL_ROOT_HOST: '%'
+            MYSQL_DATABASE: 'standalone'
+            MYSQL_USER: 'standalone'
+            MYSQL_PASSWORD: 'standalone'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        volumes:
+            - 'standalone-mysql:/var/lib/mysql'
+        networks:
+            - standalone
+        healthcheck:
+            test:
+                - CMD
+                - mysqladmin
+                - ping
+                - '-p standalone'
+            retries: 3
+            timeout: 5s
+    mailpit:
+        image: 'axllent/mailpit:latest'
+        ports:
+            - '1025:1025'
+            - '8025:8025'
+        networks:
+            - standalone
+networks:
+    standalone:
+        driver: bridge
+volumes:
+    standalone-storage:
+        driver: local
+    standalone-mysql:
+        driver: local
