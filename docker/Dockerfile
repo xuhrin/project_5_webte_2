@@ -37,7 +37,7 @@ RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.2
 RUN git clone --depth=1 https://github.com/xuhrin/project_5_webte_2
 WORKDIR /var/www/html/project_5_webte_2
 RUN chmod +x ./docker/pick-env.sh && ./docker/pick-env.sh $PARTIAL
-RUN composer install && npm install
+RUN composer install && npm install && php artisan key:generate
 
 # RUN chown www-data:www-data -R .
 RUN cp ./docker/start-container /usr/local/bin/start-container && chmod +x /usr/local/bin/start-container
