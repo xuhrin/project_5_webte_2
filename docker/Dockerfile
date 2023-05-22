@@ -36,8 +36,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.2
-
-COPY ./docker/start-container /usr/local/bin/start-container
 # COPY php.ini /etc/php/8.2/cli/conf.d/99-www-data.ini
 
 RUN git clone --depth=1 https://github.com/xuhrin/project_5_webte_2
@@ -48,6 +46,9 @@ RUN npm install && npx vite build
 RUN chown www-data:www-data -R .
 RUN if [ $PARTIAL ]; then cp ./docker/.env.part .env; cp ./docker/.env.full .env; fi
 RUN php artisan key:generate
+
+COPY ./docker/start-container /usr/local/bin/start-container
+RUN chmod +x /usr/local/bin/start-container
 
 EXPOSE 80
 
