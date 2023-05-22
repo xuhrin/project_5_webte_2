@@ -37,6 +37,7 @@ RUN apt-get update \
 
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.2
 
+COPY ./docker/start-container /usr/local/bin/start-container
 # COPY php.ini /etc/php/8.2/cli/conf.d/99-www-data.ini
 
 RUN git clone --depth=1 https://github.com/xuhrin/project_5_webte_2
@@ -49,4 +50,5 @@ RUN if [ $PARTIAL ]; then cp ./docker/.env.part .env; cp ./docker/.env.full .env
 RUN php artisan key:generate
 
 EXPOSE 80
-CMD php artisan migrate && php artisan serve --host=0.0.0.0 --port=80
+
+ENTRYPOINT [ "start-container" ]
