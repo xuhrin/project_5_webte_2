@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Providers;
+namespace App\Http\Middleware;
 
-use Illuminate\Support\ServiceProvider;
+use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class RolesServiceProvider extends ServiceProvider
+class RolesAndPermissions
 {
     public $permissionsStudent = [
         // problem
@@ -32,17 +34,11 @@ class RolesServiceProvider extends ServiceProvider
     ];
 
     /**
-     * Register services.
+     * Handle an incoming request.
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function register(): void
-    {
-        //
-    }
-
-    /**
-     * Bootstrap services.
-     */
-    public function boot(): void
+    public function handle(Request $request, Closure $next): Response
     {
         if (!Role::where('name', 'student')->exists()) {
             $student = Role::create(['name' => 'student']);
@@ -64,5 +60,7 @@ class RolesServiceProvider extends ServiceProvider
             $teacher->givePermissionTo($this->permissionsTeacher);
             $teacher->givePermissionTo($this->permissionsStudent);
         }
+
+        return $next($request);
     }
 }
