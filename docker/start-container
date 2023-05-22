@@ -2,9 +2,11 @@
 
 # Set .env file
 export URL=$(printf '%s\n' "$APP_URL" | sed -e 's/[\/&]/\\&/g')
+export NAME=$(printf '%s\n' "$URL" | sed 's/https:\/\///')
 echo "Escaped URL set to $URL"
 sed -i "s/APP_URL=.*/APP_URL=$URL/" .env
 sed -i "s/ASSET_URL=.*/ASSET_URL=$URL/" .env
+sed -i "s/SERVER_NAME=.*/SERVER_NAME=$NAME/" .env
 echo 'yes' | php artisan migrate
 echo 'yes' | php artisan db:seed --class PermissionSeeder
 
