@@ -48,6 +48,20 @@ server {
 }
 ```
 
+Docker (wihout docker-compose) requires database and user:
+
+```sh
+sudo mysql
+```
+
+```sql
+CREATE DATABASE standalone;
+CREATE USER 'standalone'@'localhost' IDENTIFIED BY 'standalone';
+GRANT ALL PRIVILEGES ON standalone.* TO 'standalone'@'localhost';
+FLUSH PRIVILEGES;
+exit
+```
+
 Build container:
 
 ```sh
