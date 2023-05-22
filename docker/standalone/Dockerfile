@@ -1,8 +1,8 @@
 FROM ubuntu:22.04
 
-ARG WWWGROUP=1000
+# ARG WWWGROUP=1000
 ARG NODE_VERSION=18
-ARG POSTGRES_VERSION=15
+ARG PARTIAL=1
 
 WORKDIR /var/www/html
 
@@ -17,7 +17,7 @@ RUN apt-get update \
     && echo "deb [signed-by=/etc/apt/keyrings/ppa_ondrej_php.gpg] https://ppa.launchpadcontent.net/ondrej/php/ubuntu jammy main" > /etc/apt/sources.list.d/ppa_ondrej_php.list \
     && apt-get update \
     && apt-get install -y php8.2-cli php8.2-dev \
-       php8.2-pgsql php8.2-sqlite3 php8.2-gd php8.2-imagick \
+       php8.2-gd php8.2-imagick \
        php8.2-curl \
        php8.2-imap php8.2-mysql php8.2-mbstring \
        php8.2-xml php8.2-zip php8.2-bcmath php8.2-soap \
@@ -43,13 +43,14 @@ RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.2
 # RUN chmod +x /usr/local/bin/start-container
 
 RUN git clone https://github.com/xuhrin/project_5_webte_2
+RUN git pull
 WORKDIR /var/www/html/project_5_webte_2
 RUN composer install
 RUN npm install
 RUN npx vite build
 
-RUN cp docker/standalone/.env .env
-RUN php artisan key:generate
+RUN if [ $PARTIAL ]; then cp ./docker/standalone/.env.part .env; cp ./docker/standalone/.env.full .env; fi
+RUN php artisan key:generate && php artisan config:cache && php artisan cache:clear
 RUN php artisan migrate
 RUN php artisan db:seed
 
