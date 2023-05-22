@@ -11,7 +11,6 @@
         "laravel/framework": "^10.8",
         "laravel/sanctum": "^3.2",
         "laravel/ui": "^4.2",
-        "ryoluo/sail-ssl": "^1.2",
         "spatie/laravel-permission": "^5.10"
     },
     "require-dev": {
