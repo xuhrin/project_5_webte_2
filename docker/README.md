@@ -53,6 +53,5 @@ Build docker:
 ```sh
 cd ./docker
 docker build -t app:app .
-docker network create -d bridge app-bridge
-docker run -d -p 8000:80 -e APP_URL=[URL_HERE] --network app-bridge -v [STORAGE_FOLDER]:/var/www/html/project_5_webte_2/storage --name app app:app
+docker run -d -p 8000:8000 -e APP_URL=[URL_HERE] --network host -v [STORAGE_FOLDER]:/var/www/html/project_5_webte_2/storage --name app app:app
 ```

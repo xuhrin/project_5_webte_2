@@ -46,6 +46,6 @@ RUN php artisan key:generate
 RUN cp ./docker/start-container /usr/local/bin/start-container
 RUN chmod +x /usr/local/bin/start-container
 
-EXPOSE 80
+EXPOSE 8000
 
 ENTRYPOINT [ "start-container" ]
