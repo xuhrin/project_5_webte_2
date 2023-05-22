@@ -55,6 +55,13 @@ cd ./docker
 docker build -t app:app . && docker run -d -e APP_URL=[URL_HERE] --network host --name app app:app
 ```
 
+Or with docker-compose:
+
+```sh
+cd ./docker
+APP_URL=[URL_HERE] docker-compose up -d
+```
+
 Remove container:
 
 ```sh
