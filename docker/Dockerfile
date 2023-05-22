@@ -1,14 +1,11 @@
 FROM ubuntu:22.04
 
-# ARG WWWGROUP=1000
 ARG NODE_VERSION=18
 ARG PARTIAL=1
 
 WORKDIR /var/www/html
-
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=UTC
-
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update \
@@ -36,7 +33,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.2
-# COPY php.ini /etc/php/8.2/cli/conf.d/99-www-data.ini
 
 RUN git clone --depth=1 https://github.com/xuhrin/project_5_webte_2
 WORKDIR /var/www/html/project_5_webte_2
