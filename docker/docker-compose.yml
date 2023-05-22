@@ -11,7 +11,7 @@ services:
             - 'host.docker.internal:host-gateway'
         ports:
             - '8000:8000'
-            - '5173:5173'
+            - '9173:9173'
         environment:
             APP_URL: '${APP_URL:-http://localhost:8000}'
             XDEBUG_MODE: off
@@ -29,7 +29,7 @@ services:
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
-            - '3306:3306'
+            - '9306:3306'
         environment:
             MYSQL_ROOT_PASSWORD: 'standalone'
             MYSQL_ROOT_HOST: '%'
@@ -52,8 +52,8 @@ services:
     mailpit:
         image: 'axllent/mailpit:latest'
         ports:
-            - '1025:1025'
-            - '8025:8025'
+            - '9025:1025'
+            - '9000:8025'
         networks:
             - standalone
 networks:
