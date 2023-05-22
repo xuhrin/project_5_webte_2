@@ -47,7 +47,7 @@ RUN chown www-data:www-data -R .
 RUN if [ $PARTIAL ]; then cp ./docker/.env.part .env; cp ./docker/.env.full .env; fi
 RUN php artisan key:generate
 
-COPY ./docker/start-container /usr/local/bin/start-container
+RUN cp ./docker/start-container /usr/local/bin/start-container
 RUN chmod +x /usr/local/bin/start-container
 
 EXPOSE 80
