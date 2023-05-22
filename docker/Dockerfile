@@ -40,7 +40,7 @@ RUN composer install
 RUN npm install && npx vite build
 
 # RUN chown www-data:www-data -R .
-RUN if [ $PARTIAL ]; then cp ./docker/.env.part .env; cp ./docker/.env.full .env; fi
+RUN if [[ "$PARTIAL" == "1" ]]; then cp ./docker/.env.part .env; else cp ./docker/.env.full .env; fi
 RUN php artisan key:generate
 
 RUN cp ./docker/start-container /usr/local/bin/start-container
